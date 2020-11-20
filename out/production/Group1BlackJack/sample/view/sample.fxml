@@ -5,4 +5,16 @@
 <?import javafx.scene.control.Label?>
 <GridPane fx:controller="sample.control.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+
+    <Button onAction="#gameStart" GridPane.rowIndex="0" GridPane.columnIndex="0" text="START"></Button>
+    <Button onAction="#standClicked" GridPane.rowIndex="1" GridPane.columnIndex="0" text="Player1_STAND"></Button>
+    <Button onAction="#hitClicked" GridPane.rowIndex="2" GridPane.columnIndex="0" text="Player1_HIT"></Button>
+    <Button onAction="#standClicked" GridPane.rowIndex="3" GridPane.columnIndex="0" text="Player2_STAND"></Button>
+    <Button onAction="#hitClicked" GridPane.rowIndex="4" GridPane.columnIndex="0" text="Player2_HIT"></Button>
+    <Button onAction="#escClicked" GridPane.rowIndex="5" GridPane.columnIndex="0" text="esc"></Button>
+    <Button onAction="#helpClicked" GridPane.rowIndex="6" GridPane.columnIndex="0" text="HELP"></Button>
+
+
+
 </GridPane>

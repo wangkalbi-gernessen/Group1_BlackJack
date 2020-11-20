@@ -1,13 +1,17 @@
 package sample.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 
 public class Deck {
+
+    // Suit Constants
     private static String HEARTS = "♥";
+    private static String DIAMONDS = "♦";
     private static String SPADES = "♠";
     private static String CLOVERS = "♣";
-    private static String DIAMONDS = "♦";
+
+    // Rank Constants
     private static int ACE = 11;
     private static int TWO = 2;
     private static int THREE = 3;
@@ -22,45 +26,65 @@ public class Deck {
     private static int QUEEN = 10;
     private static int KING = 10;
 
-    // Hashmap -> Key(0-52), Array(Suit, Value)
-    // 1. Heart -> 11,2,3,4,5,6,7,8,9,10,10,10,10
-    private Card[] deckOfCards; // track all the deck of cards
-    // Pool of card(53 of them) -> Array? in other file? -> if picked it goes to player's deck
-    // -> Remaining card should be tracked
+    private static ArrayList<Card> deckOfCards;
 
     /**
      * Constructor
      * Arrange all cards here
      */
     public Deck(){
-        ArrayList<Card> trumps = new ArrayList<Card>();
-        trumps.add(new Card(HEARTS, ACE));
-        trumps.add(new Card(HEARTS, TWO));
-        trumps.add(new Card(HEARTS, THREE));
-        trumps.add(new Card(HEARTS, FOUR));
-        trumps.add(new Card(HEARTS, FIVE));
-        trumps.add(new Card(HEARTS, SIX));
-        trumps.add(new Card(HEARTS, SEVEN));
-        trumps.add(new Card(HEARTS, EIGHT));
-        trumps.add(new Card(HEARTS, NINE));
-        trumps.add(new Card(HEARTS, TEN));
-        trumps.add(new Card(HEARTS, JACK));
-        trumps.add(new Card(HEARTS, QUEEN));
-        trumps.add(new Card(HEARTS, KING));
+        this.deckOfCards = refillDeck();
     }
 
-//     Constructor  -> Initially it has to have 53 cards
-    public Deck(Card[] deckOfCards){
+
+    public Deck(ArrayList<Card> deckOfCards){
         this.deckOfCards = deckOfCards;
     }
 
-    // getter
-    public Card[] getDeckOfCards() {
+    public static ArrayList<Card> refillDeck(){
+        ArrayList<Card> deckOfCards = new ArrayList<>();
+//        deckOfCards.add(new Card(HEARTS, ACE));
+//        deckOfCards.add(new Card(HEARTS, TWO));
+//        deckOfCards.add(new Card(HEARTS, THREE));
+//        deckOfCards.add(new Card(HEARTS, FOUR));
+//        deckOfCards.add(new Card(HEARTS, FIVE));
+//        deckOfCards.add(new Card(HEARTS, SIX));
+//        deckOfCards.add(new Card(HEARTS, SEVEN));
+//        deckOfCards.add(new Card(HEARTS, EIGHT));
+//        deckOfCards.add(new Card(HEARTS, NINE));
+//        deckOfCards.add(new Card(HEARTS, TEN));
+//        deckOfCards.add(new Card(HEARTS, JACK));
+//        deckOfCards.add(new Card(HEARTS, QUEEN));
+//        deckOfCards.add(new Card(HEARTS, KING));
+
+        String[] suit = {HEARTS, DIAMONDS, SPADES, CLOVERS};
+        int[] rank = {ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING};
+//        deckOfCards.add(new Card(suit[0],rank[0]));
+
+        for (int i = 0; i < 4; i++){
+         for (int j = 0; j < 13; j++){
+            deckOfCards.add(new Card(suit[i], rank[j]));
+         }
+        }
+        Deck.deckOfCards = deckOfCards;
         return deckOfCards;
     }
 
-    // setter
-    public void setDeckOfCards(Card[] deckOfCards) {
-        this.deckOfCards = deckOfCards;
+
+    public static ArrayList<Card> getDeckOfCards(){
+        return deckOfCards;
+    }
+
+
+    public static void setDeckOfCards(ArrayList<Card> deckOfCards){
+        Deck.deckOfCards = deckOfCards;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Deck{" +
+                "deckOfCards=" + deckOfCards +
+                '}';
     }
 }

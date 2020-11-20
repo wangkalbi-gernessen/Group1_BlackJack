@@ -3,122 +3,100 @@ package sample.control;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import sample.model.Card;
+import sample.model.Card;       ////
 import sample.model.Deck;
 import sample.model.Player;
 
+
 import java.awt.*;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.ArrayList;   ///
 import java.util.Random;
 import java.util.ResourceBundle;
 
+
 public class Controller implements Initializable {
 
-    // Button id property
-    @FXML
-    public Button btn2;
-
-
-    // Start game
-    // Initialization HERE, take user input as an argument!!
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //1.  Initializing instance variables(properties) //
-        // Depends on user select (Single player or 2 players)
-        // if single -> Create a player
-        // if 2 players -> create two players
-        Player dealer = new Player("Dealer", new ArrayList<Integer>(), 0, false);
-        Player player1 = new Player("Player1", new ArrayList<Integer>(), 0, true);
-        Player player2 = new Player("Player2", new ArrayList<Integer>(),0, false);
-//        Deck deck = new deck();
-
-        // button from grid
-        // Judge
-        //2. Display player name on Label
-        // changeLabel()    ; to track turn
+        ArrayList<Player> players = new ArrayList<>();
+        players.add(0, new Player("Dealer", new ArrayList<Integer>(), 0, true));
+        players.add(1, new Player("Player1", new ArrayList<Integer>(), 0, true));
     }
 
-    // Each Button action event HERE//
 
-    //btn2)----------HIT CARD-------------------------------------------
-    public int HitClicked(ActionEvent actionEvent) {
-        int valueHit = HitCard(0);
-        // Add the card to Player's hand
-        // Decrease from Deck
-        // Pick a random card from Deck
-        return valueHit;
+    ArrayList<Player> players = new ArrayList<>();
+
+
+    // Start button -> Create required objects
+    public void gameStart(ActionEvent actionEvent) {
+        Deck deck = new Deck();
+        System.out.println("deckOfCards start with " + Deck.getDeckOfCards().size() + " !");
+        System.out.println(deck);
+        players.add(0, new Player("Dealer", new ArrayList<Integer>(), 0, true));
+        players.add(1, new Player("Player1", new ArrayList<Integer>(), 0, true));
+
+        System.out.println(players);
+        System.out.println("Game Start!");
     }
 
-    // take deck size (pass HashMap Deck as argument
-    public int deckSize(){
-        // return decksize;
-        return 0;
-    }
 
-    // Return a random card from Deck, return its value
-    public int HitCard(int deckSize){
-        // if
-        deckSize = 13;    // Number of Deck elements
-        Card card = new Card("HEART",13,false);
+    // Pick up random card
+    public void hitClicked(ActionEvent actionEvent) {
+        System.out.println("hit clicked");
         Random rand = new Random();
-        int int_random = rand.nextInt(deckSize);
-        // return hashmap name.get(int_random);    //take out value with pair of the int_random(key)
-        // set new Deck after removing the element Here
-        // change turn
-        return 0;
-    }
-
-    // Add picked card to Hand of player
-    public ArrayList<Integer> addCard(Player player, ArrayList<Integer> hand, int hitValue){
-        ArrayList<Integer> newHand = player.getHand();
-        newHand.add(hitValue);
-        player.setHand(newHand);
-        return hand;
-    }
-
-    // Calculate & Display sum     -------> just return total sum
-    public int displaySum(Player player){
-        int handSum = 0;
-        int element = player.getHand().size();
-        for (int i = 0; i < element; i++){
-            handSum = handSum + player.getHand().get(i);
+        int int_random = rand.nextInt(Deck.getDeckOfCards().size());
+        System.out.println("Randomly chosen card is " + Deck.getDeckOfCards().get(int_random));
+        int value = Deck.getDeckOfCards().get(int_random).getRank();
+        ArrayList<Integer> newHand = playingPlayer(players).getHand();
+        newHand.add(value);
+        playingPlayer(players).setHand(newHand);        // Add picked value to player's hand
+        int newSum = playingPlayer(players).getSum();
+        for (int i = 0; i < playingPlayer(players).getHand().size(); i++){
+           newSum = newSum + playingPlayer(players).getHand().get(i);
         }
-        return handSum;
+        playingPlayer(players).setSum(newSum);                      // Add all the value from hand
+        System.out.println(players);
+
+
+        Deck.getDeckOfCards().remove(int_random);               // remove the element
+        Deck.setDeckOfCards(Deck.getDeckOfCards());             // Set deck of cards
+        System.out.println(Deck.getDeckOfCards().size());
     }
 
 
 
-    //-------------------------------------------------------//
 
-    // --------STAND------- not draw, skip player///
+    public void standClicked(ActionEvent actionEvent) {
+        System.out.println("stand clicked");
+    }
 
+    public void escClicked(ActionEvent actionEvent) {
+        System.out.println("escape clicked");
+        System.exit(0);
+    }
 
-
-
-
-
-    // 3. Take Turns (method: ChangeLabel) -> single player = dealer and a player
-    public void ChangeTurn(Player player){
-        player.setPlaying(false);
+    public void helpClicked(ActionEvent actionEvent) {
+        System.out.println("help clicked");
     }
 
 
+    // check a player turn
+    public static Player playingPlayer(ArrayList<Player> players){
+        Player playingPlayer = null;
+        for (int i = 0; i < players.size();i++) {
+            if (players.get(i).getPlaying() == false) {
+                continue;
+            } else {
+                playingPlayer = new Player(players.get(i).getName(),players.get(i).getHand(),players.get(i).getSum(),players.get(i).getPlaying());
+            }
+        }
+        return playingPlayer;
+    }
 
 
 
     /// Display result (Judge -> use judge class to show the result (Win, bust, push)
-
-
-
-
-
-    // Display game rule(Associate to HELP button)
-
-
-
-
-    // a method to quit
 
 
 

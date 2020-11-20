@@ -6,10 +6,10 @@ import java.util.ArrayList;
  * This class is to represent players (Dealer, player1, player2)
  */
 public class Player {
-    private String name;    // Dealer, player1, player2
-    private ArrayList<Integer> hand; //  to track which card(value/suit) the player holds
-    private int sum;        // sum of cards picked
-    private boolean playing;
+    private static String name;    // Dealer, player1, player2
+    private static ArrayList<Integer> hand;
+    private static int sum;        // sum of cards picked
+    private static boolean playing;
 
     public Player(String name, ArrayList<Integer> hand, int sum, boolean playing){
         this.name = name;
@@ -20,34 +20,43 @@ public class Player {
 
 
     // getter methods
-    public String getName(){
+    public static String getName(){
         return name;
     }
-    public ArrayList<Integer> getHand(){
+    public static ArrayList<Integer> getHand(){
         return hand;
     }
 
-    public int getSum(){
+    public static int getSum(){
         return sum;
     }
-    public boolean getPlaying(){
+    public static boolean getPlaying(){
         return playing;
     }
 
     // setter methods
-    public void setName(String name){
-        this.name = name;
+    public static void setName(String name){
+        Player.name = name;
     }
-    public void setHand(ArrayList<Integer> hand) {
-        this.hand = hand;
-    }
-
-    public void setSum(int sum) {
-        this.sum = sum;
+    public static void setHand(ArrayList<Integer> hand) {
+        Player.hand = hand;
     }
 
-    public void setPlaying(boolean playing){
-        this.playing = playing;
+    public static void setSum(int sum) {
+        Player.sum = sum;
     }
 
+    public static void setPlaying(boolean playing){
+        Player.playing = playing;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", hand=" + hand +
+                ", sum=" + sum +
+                ", playing=" + playing +
+                '}' + "\n" ;
+    }
 }
