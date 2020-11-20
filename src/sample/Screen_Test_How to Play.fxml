@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea layoutX="8.0" layoutY="107.0" prefHeight="353.0" prefWidth="784.0" text="This game should making card sum 21 or near 21&#10;Dealer distributes two cards to Player1 and Player2 for each and Dealer draws a card then game start.&#10;Player1 can choose hit or stand.&#10;But Player1’s can’t sum number over 22. That is Bust. It’s die&#10;Player1 is stand or bust then turn Player2 and same paly Player1&#10;All Player’s turn finish after Dealer can get a card but Dealer can’t stand until card sum reaches to 16. Card sum over 17 then can stand" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextArea>
+      <Button layoutX="698.0" layoutY="442.0" mnemonicParsing="false" text="Return" textAlignment="CENTER">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <TextField layoutX="14.0" layoutY="14.0" prefHeight="44.0" prefWidth="648.0" text="How to play black Jack">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </TextField>
+   </children>
+</Pane>
