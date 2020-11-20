@@ -1,5 +1,7 @@
 package sample.model;
 
+
+
 /**
  * This is to judge the end of game: WIN/BUST/PUSH
  */
