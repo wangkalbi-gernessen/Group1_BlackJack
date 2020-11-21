@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.text.Font?>
+<GridPane fx:id="gridLayout"
+          alignment="center"
+          hgap="10"
+          vgap="10"
+          xmlns:fx="http://javafx.com/fxml/1"
+          xmlns="http://javafx.com/javafx/8.0.171"
+          fx:controller="sample.view.HelpWindow">
+
+    <Text text="How To Play Black Jack"
+          GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <font><Font name="Arial Black" size="30"></Font></font>
+    </Text>
+    <Text text="The game starts with two cards for each player and one card for Dealer."
+          GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <font><Font name="Arial Black" size="15"></Font></font>
+    </Text>
+    <Text text="Player1 can choose hit or stand."
+          GridPane.columnIndex="0" GridPane.rowIndex="2">
+        <font><Font name="Arial Black" size="15"></Font></font>
+    </Text>
+    <Text text="But Player1’s can’t sum number over 22. That is Bust. It’s die."
+          GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <font><Font name="Arial Black" size="15"></Font></font>
+    </Text>
+    <Text text="Player1 is stand or bust then turn Player2 and same play Player1."
+          GridPane.columnIndex="0" GridPane.rowIndex="4">
+        <font><Font name="Arial Black" size="15"></Font></font>
+    </Text>
+    <Text text="All Player’s turn finish after Dealer can get a card,"
+          GridPane.columnIndex="0" GridPane.rowIndex="5">
+        <font><Font name="Arial Black" size="15"></Font></font>
+    </Text>
+
+    <Text text="but Dealer can’t stand until card sum reaches to 16."
+          GridPane.columnIndex="0" GridPane.rowIndex="6">
+        <font><Font name="Arial Black" size="15"></Font></font>
+    </Text>
+    <Text text="Card sum over 17 then can stand."
+          GridPane.columnIndex="0" GridPane.rowIndex="7">
+        <font><Font name="Arial Black" size="15"></Font></font>
+    </Text>
+
+    <HBox spacing="10" alignment="BOTTOM_RIGHT" GridPane.columnIndex="0" GridPane.rowIndex="8">
+        <Button fx:id="btnReturn" onAction="#btnClickReturn" prefWidth="28.0" text="Return" maxWidth="100" minWidth="100"/>
+    </HBox>
+
+    <columnConstraints>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+
+
+</GridPane>
