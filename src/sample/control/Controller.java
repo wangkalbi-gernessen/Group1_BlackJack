@@ -2,15 +2,20 @@ package sample.control;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import sample.model.Card;       ////
 import sample.model.Deck;
 import sample.model.Player;
-import java.awt.*;
+import sample.view.HelpWindow;
+
 import java.net.URL;
 import java.util.ArrayList;   ///
 import java.util.Random;
 import java.util.ResourceBundle;
 public class Controller implements Initializable {
+    @FXML
+    public Button btnStart;
+
     private ArrayList<Player> players = new ArrayList<>();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,6 +35,9 @@ public class Controller implements Initializable {
         }
         System.out.println(players.get(0));
         System.out.println("Game Start!");
+
+        // Hide Start Button after game starting
+        btnStart.setVisible(false);
     }
     // Pick up random card
     public void hitClicked(ActionEvent actionEvent) {
@@ -60,6 +68,7 @@ public class Controller implements Initializable {
     }
     public void helpClicked(ActionEvent actionEvent) {
         System.out.println("help clicked");
+        HelpWindow.displayHelp(actionEvent, getClass());
     }
     // check a player turn
     public static Player playingPlayer(ArrayList<Player> players){
