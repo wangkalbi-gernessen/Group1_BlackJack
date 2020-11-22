@@ -3,14 +3,26 @@ import com.sun.xml.internal.xsom.XSUnionSimpleType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import sample.model.Card;
+// <<<<<<< kazu_confirmation_dialog
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import sample.model.Card;       ////
+// =======
+// import sample.model.Card;
+// >>>>>>> main
 import sample.model.Deck;
 import sample.model.Player;
 import sample.view.HelpWindow;
 
 import java.net.URL;
-import java.util.ArrayList;
+// <<<<<<< kazu_confirmation_dialog
+import java.util.ArrayList;   ///
+import java.util.Optional;
+// =======
+// import java.util.ArrayList;
+// >>>>>>> main
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -150,8 +162,17 @@ public class Controller implements Initializable {
 
 
     public void escClicked(ActionEvent actionEvent) {
-        System.out.println("escape clicked");
-        System.exit(0);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Look, a Confirmation Dialog");
+        alert.setContentText("Do you quit this game?");
+        ButtonType continueBtn = new ButtonType("Continue", ButtonBar.ButtonData.OK_DONE);
+        ButtonType quitBtn = new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(continueBtn,quitBtn);
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == quitBtn){
+            System.exit(0);
+        }
     }
 
 
