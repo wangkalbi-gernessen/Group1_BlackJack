@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -35,7 +36,7 @@
     </Label>
     <Button fx:id="btnHelp" layoutX="70.0" layoutY="32.0" mnemonicParsing="false" onAction="#helpClicked" text="HELP" textAlignment="CENTER" />
     <Button fx:id="btnEsc" cancelButton="true" layoutX="13.0" layoutY="32.0" mnemonicParsing="false" onAction="#escClicked" text="ESC" textAlignment="CENTER" />
-    <ImageView fitHeight="115.0" fitWidth="220.0" layoutX="253.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="imgViewDealer" fitHeight="115.0" fitWidth="220.0" layoutX="253.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="/sample/images/dealer.png" />
         </image>
@@ -55,5 +56,6 @@
             <Font size="32.0" />
          </font>
       </Button>
+      <HBox fx:id="hBoxDealer" layoutX="200.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" visible="false" />
 </children>
 </Pane>

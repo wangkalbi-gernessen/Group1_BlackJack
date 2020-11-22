@@ -1,15 +1,16 @@
 package sample.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 //import java.util.HashMap;
 
 public class Deck {
 
     // Suit Constants
-    private static String HEARTS = "♥";
-    private static String DIAMONDS = "♦";
-    private static String SPADES = "♠";
-    private static String CLOVERS = "♣";
+    public static final String HEARTS = "♥";
+    public static final String DIAMONDS = "♦";
+    public static final String SPADES = "♠";
+    public static final String CLOVERS = "♣";
 
     // Rank Constants
     private static int ACE = 11;
