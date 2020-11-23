@@ -3,11 +3,8 @@ import com.sun.xml.internal.xsom.XSUnionSimpleType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 // <<<<<<< kazu_confirmation_dialog
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import sample.model.Card;       ////
 // =======
 // import sample.model.Card;
@@ -43,6 +40,10 @@ public class Controller implements Initializable {
     public Button btnHelp;
     @FXML
     public Button btnEsc;
+    @FXML
+    public Label labelSum1;
+    @FXML
+    public Label labelSum2;
 
     private Deck deck;
     private ArrayList<Player> players = new ArrayList<>();
@@ -128,7 +129,16 @@ public class Controller implements Initializable {
         for (int i = 0; i < player.getHand().size();i++){
             newSum = newSum + player.getHand().get(i);
         }
+        displayPlayerSum(player, newSum);
         return newSum;
+    }
+
+    public void displayPlayerSum(Player player, int sum){
+        if(player.getName().equals("Player1")){
+            labelSum1.setText("Player1 sum:" + sum);
+        }else if(player.getName().equals("Player2")){
+            labelSum2.setText("Player2 sum:" + sum);
+        }
     }
 
     public void hitClicked(ActionEvent actionEvent) {
