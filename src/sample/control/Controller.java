@@ -40,10 +40,13 @@ public class Controller implements Initializable {
     public Button btnHelp;
     @FXML
     public Button btnEsc;
+    // by Kazunobu
     @FXML
     public Label labelSum1;
     @FXML
     public Label labelSum2;
+    @FXML
+    public Label labelSumDealer;
 
     private Deck deck;
     private ArrayList<Player> players = new ArrayList<>();
@@ -129,15 +132,19 @@ public class Controller implements Initializable {
         for (int i = 0; i < player.getHand().size();i++){
             newSum = newSum + player.getHand().get(i);
         }
+        // by Kazunobu
         displayPlayerSum(player, newSum);
         return newSum;
     }
 
+    // by Kazunobu
     public void displayPlayerSum(Player player, int sum){
         if(player.getName().equals("Player1")){
             labelSum1.setText("Player1 sum:" + sum);
         }else if(player.getName().equals("Player2")){
             labelSum2.setText("Player2 sum:" + sum);
+        }else{
+            labelSumDealer.setText("Dealer sum:" + sum);
         }
     }
 
